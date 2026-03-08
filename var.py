@@ -23,7 +23,7 @@ lnurl = os.getenv("LNBITS_LNURL")
 lnbits_server = os.getenv("LNBITS_SERVER", ws_switch.split("/")[2])
 lnbits_wallet = os.getenv("LNBITS_WALLET")
 acl_api_token = os.getenv("LNBITS_ACL_TOKEN")
-switch_title = os.getenv("BITCOIN_SWITCH_TITLE", "Zapshutter")
+switch_title = os.getenv("BITCOIN_SWITCH_TITLE", "nervenectar")
 
 ##### MERCHANT #####
 
@@ -32,13 +32,15 @@ currency = os.getenv("CURRENCY")
 
 suggested_wallets = json.loads(os.environ['SUGGESTED_WALLETS'])
 
+coke_animation = ['coke1', 'coke2', 'coke3', 'coke4']
+
 ##### SYSTEM #####
 
 error = False
 
 debuglevel = os.getenv("DEBUG_LEVEL", "INFO")
 
-file_handler = logging.FileHandler('zapshutter.log')
+file_handler = logging.FileHandler('nervenectar.log')
 stdout_handler = logging.StreamHandler(sys.stdout)
 handlers = [file_handler, stdout_handler]
 
@@ -70,7 +72,10 @@ font_a = os.getenv("FONTA", "Font.ttc")
 font_b = os.getenv("FONTB", "Rushfordclean.otf")
 fontsize_a = int(os.getenv("FONTSIZEA", 24))
 fontsize_b = int(os.getenv("FONTSIZEB", 32))
+fontsize_bl = int(os.getenv("FONTSIZEB", 90))
+
 
 #font36 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 36)
 fontA = ImageFont.truetype(os.path.join(picdir, font_a), fontsize_a)
 fontB = ImageFont.truetype(os.path.join(picdir, font_b), fontsize_b)
+fontBL = ImageFont.truetype(os.path.join(picdir, font_b), fontsize_bl)

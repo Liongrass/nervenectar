@@ -6,7 +6,7 @@ import qrcode
 from time import sleep
 
 # Functions and variables
-from var import currency, fontA, fontB, lnurl, picdir, price, suceess_screen_expiry, suggested_wallets
+from var import currency, coke_animation, fontA, fontB, fontBL, lnurl, picdir, price, suceess_screen_expiry, suggested_wallets
 from display import display_overlay, display_screen, epd, initialize
 from waveshare_epd import epd3in7
 
@@ -22,7 +22,7 @@ def canvas():
 def coordinates(img):
     x_center = (canvas_width - img.width) // 2
     y_center = (canvas_height - img.height) // 2
-    qr_offset = 100
+    qr_offset = 60
     global paste_box
     paste_box = (x_center, y_center + qr_offset, x_center + img.width, y_center + img.height + qr_offset)
     return paste_box
@@ -31,7 +31,7 @@ def make_qrcode():
     qr = qrcode.QRCode(
         version=1,
         error_correction=qrcode.constants.ERROR_CORRECT_L,
-        box_size=5,
+        box_size=4,
         border=1,
         )
     qr.add_data(lnurl.upper())
@@ -57,11 +57,15 @@ def make_idlescreen(error):
     display_overlay(idle_img)
 
     for i in suggested_wallets:
-        load_logos(i)
-        idle_img.paste(logo_img_s, (45, 70 + suggested_wallets.index(i) * 55))
-        draw.text((105, 95 + suggested_wallets.index(i) * 55), i, font = fontA, anchor="lm")
+        load_pics(i, 40)
+        idle_img.paste(pic_img_s, (35, 70 + suggested_wallets.index(i) * 50))
+        draw.text((85, 90 + suggested_wallets.index(i) * 50), i, font = fontA, anchor="lm")
         display_overlay(idle_img)
     if error == False:
+        draw.text((140, 215 + 6*40), f"ANY POP", font = fontA, anchor="ma")
+        display_overlay(idle_img)
+        draw.text((140, 175 + 5*40), f"{price} {currency}", font = fontBL, anchor="ma")
+        display_overlay(idle_img)
         make_qrcode()
         idle_img.paste(qr_img, paste_box)
         display_overlay(idle_img)
@@ -80,44 +84,43 @@ def make_success_overlay():
     overlay_img = idle_img
     overlay_img.paste(img, paste_box)
     draw = ImageDraw.Draw(overlay_img)
-    draw.text((140, 205 + 6*40), "Payment Received!", font = fontB, anchor="ma")
+    #draw.text((140, 205 + 6*40), "Payment Received!", font = fontB, anchor="ma")
     logging.debug(overlay_img)
     logging.debug("Showing success overlay")
     display_overlay(overlay_img)
 
-def load_logos(i):
-    logo_img = Image.open(os.path.join(picdir, i + '_100x100.bmp'))
-    global logo_img_s
-    logo_img_s = logo_img.resize((50, 50))
-    return logo_img_s
+def load_pics(i, pic_size):
+    pic_img = Image.open(os.path.join(picdir, i + '_100x100.bmp'))
+    global pic_img_s
+    pic_img_s = pic_img.resize((pic_size, pic_size))
+    return pic_img_s
 
 def make_confirmation_screen(amount, comment):
-    photo_img = canvas()
-    draw = ImageDraw.Draw(photo_img)
+    conf_img = canvas()
+    draw = ImageDraw.Draw(conf_img)
     draw.text((140, 20), "Payment Received!", font = fontB, anchor="ma")
-    display_screen(photo_img)
+    display_screen(conf_img)
     #draw.text((20, 80), str(price) + " " + currency, font = fontB, anchor="lm")
     #draw.text((20, 100), str(amount) + " satoshi", font = fontA, anchor="lm")
     if comment != "":
         draw.text((20, 70), "Your comment:", font = fontA, anchor="lm")
         draw.text((20, 95), comment, font = fontA, anchor="lm")
-    display_overlay(photo_img)
+    display_overlay(conf_img)
     sleep(1)
-    draw.text((140, 120), "GET READY", font = fontB, anchor="ma")
-    display_overlay(photo_img)
+    draw.text((140, 80 + 0*40), "1) OPEN FRIDGE", font = fontB, anchor="ma")
+    display_overlay(conf_img)
     sleep(1)
-    draw.text((140, 150), "3...", font = fontB, anchor="ma")
-    display_overlay(photo_img)
+    draw.text((140, 80 + 1*40), "2) PULL BOTTLE", font = fontB, anchor="ma")
+    display_overlay(conf_img)
     sleep(1)
-    draw.text((140, 180), "2...", font = fontB, anchor="ma")
-    display_overlay(photo_img)
+    draw.text((140, 80 + 2*40), "3) SIP AND ENJOY", font = fontB, anchor="ma")
+    display_overlay(conf_img)
     sleep(1)
-    draw.text((140, 210), "1...", font = fontB, anchor="ma")
-    display_overlay(photo_img)
-    sleep(1)
-    camera = Image.open(os.path.join(picdir, 'camera_200x200.bmp'))
-    photo_coordinates = coordinates(camera)
-    logging.debug(f"Photo coordinates: {photo_coordinates}")
-    photo_img.paste(camera, paste_box)
-    display_overlay(photo_img)
+
+    for i in coke_animation:
+        load_pics(i, 200)
+        conf_img.paste(pic_img_s, (-40 + coke_animation.index(i) * 50, 100 + coke_animation.index(i) * 60))
+        display_overlay(conf_img)
+        print(conf_img)
+
     epd.sleep()

@@ -14,7 +14,7 @@ from screens import make_idlescreen
 
 async def main():
 	try:
-		logging.info("Starting Zapshutter")
+		logging.info("Starting Satoshi's Numinous Nerve Nectar")
 		get_setup_method()
 		check_display()
 		await listener()
