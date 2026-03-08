@@ -1,6 +1,6 @@
-# Zapshutter
+# Nakamoto's Numinous Nerve Nectar
 
-A simple point of sale devices leveraging LNbits' Bitcoin Switch extension.
+A beautiful Coca Cola vending machine serving only ice-cold, glass-bottled liquid candy.
 
 ## Prerequisites:
 
@@ -14,9 +14,9 @@ Then select Interfacing Options -> SPI -> Yes to enable the SPI interface
 
 ## Installation:
 
-`git clone https://github.com/Liongrass/zapshutter.git`
+`git clone https://github.com/Liongrass/nevernectar.git`
 
-`cd zapshutter`
+`cd nevernectar`
 
 `python -m venv env`
 
@@ -24,7 +24,7 @@ Then select Interfacing Options -> SPI -> Yes to enable the SPI interface
 
 `pip install -r requirements.txt`
 
-## Run Zapshutter:
+## Run Nerve Nectar:
 
 To run the machine, first copy the example configuration file.
 
@@ -52,21 +52,21 @@ Prerequisites:
 
 `sudo npm install -g pm2`
 
-### Persist Zapshutter
+### Persist Nerve Nectar
 
-`pm2 start /home/user/zapshutter/main.py --interpreter /home/user/zapshutter/env/bin/python --name zapshutter --exp-backoff-restart-delay=100`
+`pm2 start /home/user/nevernectar/main.py --interpreter /home/user/nevernectar/env/bin/python --name nevernectar --exp-backoff-restart-delay=100`
 
 `pm2 startup`
 
-This will give you a short command. Execute it to make Zapshutter run on startup.
+This will give you a short command. Execute it to make Nerve Nectar run on startup.
 
 Useful commands:
 
 ```
-pm2 logs zapshutter
+pm2 logs nevernectar
 pm2 list
 pm2 monit
-pm2 restart zapshutter
+pm2 restart nevernectar
 ```
 
 ### Further documentation
@@ -78,3 +78,9 @@ pm2 restart zapshutter
 [Display Guide](/docs/DISPLAY.md)
 
 [Pin Inventory](/docs/pins.ods)
+
+### Related Projects
+
+[21UP](/https://github.com/Liongrass/21UP)
+
+[Zapshutter](https://github.com/Liongrass/zapshutter)
