@@ -24,10 +24,10 @@ async def listener():
             async with websockets.connect(ws_switch) as websocket:
                 logging.info(f"Connected to {ws_switch}. Listening for incoming payments.")
                 error = False
-                print(f"Setting ERROR to False")
+                logging.debug(f"Setting ERROR to False")
                 make_idlescreen(error)
                 response_str = await websocket.recv()
-                print(response_str)
+                logging.info(f"Message received: {response_str}")
                 response = response_str.split("-")
                 pin = response[0]
                 duration = int(response[1])

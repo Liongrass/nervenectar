@@ -74,7 +74,7 @@ def make_idlescreen(error):
 
     logging.debug(idle_img)
     display_overlay(idle_img)
-    epd.sleep()
+    #epd.sleep()
 
 def make_success_overlay():
     initialize()
@@ -121,6 +121,6 @@ def make_confirmation_screen(amount, comment):
         load_pics(i, 200)
         conf_img.paste(pic_img_s, (-40 + coke_animation.index(i) * 50, 100 + coke_animation.index(i) * 60))
         display_overlay(conf_img)
-        print(conf_img)
+        logging.debug(conf_img)
 
-    epd.sleep()
+    # epd.sleep()
