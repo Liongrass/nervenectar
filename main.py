@@ -4,7 +4,6 @@ import logging
 
 # Functions and variables
 from display import check_display, shutdown
-from lnbits import define_switch, get_setup_method, get_switches
 from payments import listener
 from screens import make_idlescreen
 
@@ -14,8 +13,7 @@ from screens import make_idlescreen
 
 async def main():
 	try:
-		logging.info("Starting Satoshi's Numinous Nerve Nectar")
-		get_setup_method()
+		logging.info("Starting Nakamoto's Numinous Nerve Nectar")
 		check_display()
 		await listener()
 

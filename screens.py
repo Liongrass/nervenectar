@@ -7,7 +7,7 @@ from time import sleep
 
 # Functions and variables
 from var import currency, coke_animation, fontA, fontB, fontBL, lnurl, picdir, price, suceess_screen_expiry, suggested_wallets
-from display import display_overlay, display_screen, epd, initialize
+from display import display_overlay, display_screen, display_sleep, epd, initialize
 from waveshare_epd import epd3in7
 
 canvas_width = epd3in7.EPD_WIDTH
@@ -74,7 +74,7 @@ def make_idlescreen(error):
 
     logging.debug(idle_img)
     display_overlay(idle_img)
-    #epd.sleep()
+    display_sleep()
 
 def make_success_overlay():
     initialize()
@@ -123,4 +123,4 @@ def make_confirmation_screen(amount, comment):
         display_overlay(conf_img)
         logging.debug(conf_img)
 
-    # epd.sleep()
+    display_sleep()

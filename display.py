@@ -32,6 +32,10 @@ def display_screen(screen_img):
 	if show_display == True:
 		epd.display_4Gray(epd.getbuffer_4Gray(screen_img))
 
+def display_sleep():
+	if show_display == True:
+		epd.sleep()
+
 def shutdown():
 	if show_display == True:
 		logging.info("Shutting down screen")

@@ -21,9 +21,6 @@ x_api_key = os.getenv("LNBITS_INVOICE_KEY")
 lnurl = os.getenv("LNBITS_LNURL")
 
 lnbits_server = os.getenv("LNBITS_SERVER", ws_switch.split("/")[2])
-lnbits_wallet = os.getenv("LNBITS_WALLET")
-acl_api_token = os.getenv("LNBITS_ACL_TOKEN")
-switch_title = os.getenv("BITCOIN_SWITCH_TITLE", "nervenectar")
 
 ##### MERCHANT #####
 
