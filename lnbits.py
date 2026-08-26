@@ -29,10 +29,7 @@ def define_switch():
 
 def get_headers():
 	global headers
-	if web_setup == True:
-		headers = {"X-Api-Key" : x_api_key, "Content-type" : "application/json"}
-	else:
-		headers = {'accept' : 'application/json', 'Authorization' : f'Bearer {acl_api_token}'}
+	headers = {"X-Api-Key" : x_api_key, "Content-type" : "application/json"}
 	return headers
 
 def create_switch():

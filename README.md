@@ -10,7 +10,7 @@ Enable the SPI interface:
 
 `sudo raspi-config`
 
-Then select Interfacing Options -> SPI -> Yes to enable the SPI interface
+Then select Interfacing Options -> SPI -> Yes to enable the SPI interface.
 
 ## Installation:
 
