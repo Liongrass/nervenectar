@@ -14,9 +14,9 @@ Then select Interfacing Options -> SPI -> Yes to enable the SPI interface.
 
 ## Installation:
 
-`git clone https://github.com/Liongrass/nevernectar.git`
+`git clone https://github.com/Liongrass/nervenectar.git`
 
-`cd nevernectar`
+`cd nervenectar`
 
 `python -m venv env`
 
@@ -54,7 +54,7 @@ Prerequisites:
 
 ### Persist Nerve Nectar
 
-`pm2 start /home/user/nevernectar/main.py --interpreter /home/user/nevernectar/env/bin/python --name nevernectar --exp-backoff-restart-delay=100`
+`pm2 start $HOME/nervenectar/main.py --interpreter $HOME/nervenectar/env/bin/python --name nervenectar --exp-backoff-restart-delay=100`
 
 `pm2 startup`
 
@@ -63,10 +63,10 @@ This will give you a short command. Execute it to make Nerve Nectar run on start
 Useful commands:
 
 ```
-pm2 logs nevernectar
+pm2 logs nervenectar
 pm2 list
 pm2 monit
-pm2 restart nevernectar
+pm2 restart nervenectar
 ```
 
 ### Further documentation
