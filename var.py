@@ -48,10 +48,7 @@ production = os.getenv("PRODUCTION", "True").lower() in ('true', '1', 't')
 
 ##### TRIGGER #####
 
-#tray0 = json.loads(os.environ['TRAY0'])
-pulse_pin = float(os.getenv("PULSE_PIN", 5))
-pulse_duration = float(os.getenv("PULSE_DURATION", 500)) / 1000
-relay_duration = float(os.getenv("RELAY_DURATION", 500)) / 1000
+# Which pin, and how long, the relay is triggered on is defined in the LNbits interface. 
 
 ##### DISPLAY #####
 
