@@ -2,7 +2,6 @@
 import asyncio
 import logging
 import websockets
-from time import sleep
 
 # Functions and variables
 from display import shutdown
@@ -38,7 +37,11 @@ async def listener():
                     else:
                         comment = response[2]
                     logging.debug(f"Incoming message: {response}")
-                    amount = await asyncio.to_thread(get_payments)
+                    try:
+                        amount = await asyncio.to_thread(get_payments)
+                    except Exception as e:
+                        logging.exception("Could not fetch payment amount")
+                        amount = None
                     make_success_overlay()
                     pulse(pin, duration)
                     logging.debug(f"Waiting {suceess_screen_expiry}s")
