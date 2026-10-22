@@ -52,7 +52,7 @@ async def listener():
                     sleep(suceess_screen_expiry)
                 except websockets.exceptions.ConnectionClosed:
                     continue
-        except websockets.exceptions.WebSocketException, OSError, TimeoutError as e: 
+        except (websockets.exceptions.WebSocketException, OSError, TimeoutError) as e: 
             logging.error(f"ERROR: {e}")
             if error == False:
                 error = e
