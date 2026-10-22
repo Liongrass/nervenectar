@@ -32,7 +32,7 @@ async def listener():
                     response = response_str.split("-")
                     pin = response[0]
                     duration = int(response[1])
-                # Check for a comment
+                    # Check for a comment
                     global comment
                     try:
                         response[2]
@@ -50,9 +50,8 @@ async def listener():
                     make_confirmation_screen(amount, comment)
                     logging.debug(f"Waiting {suceess_screen_expiry}s")
                     sleep(suceess_screen_expiry)
-                except:
-                    websockets.exceptions.ConnectionClosed:
-                        continue
+                except websockets.exceptions.ConnectionClosed:
+                    continue
         except websockets.exceptions.WebSocketException, OSError, TimeoutError as e: 
             logging.error(f"ERROR: {e}")
             if error == False:
