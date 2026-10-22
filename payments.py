@@ -46,10 +46,10 @@ async def listener():
                     make_success_overlay()
                     pulse(pin, duration)
                     logging.debug(f"Waiting {suceess_screen_expiry}s")
-                    sleep(suceess_screen_expiry)
+                    await asyncio.sleep(suceess_screen_expiry)
                     make_confirmation_screen(amount, comment)
                     logging.debug(f"Waiting {suceess_screen_expiry}s")
-                    sleep(suceess_screen_expiry)
+                    await asyncio.sleep(suceess_screen_expiry)
                 except websockets.exceptions.ConnectionClosed:
                     continue
         except (websockets.exceptions.WebSocketException, OSError, TimeoutError) as e: 
@@ -57,6 +57,6 @@ async def listener():
             if error == False:
                 error = e
                 make_idlescreen(error)
-            sleep(suceess_screen_expiry)
+            await asyncio.sleep(suceess_screen_expiry)
         except asyncio.CancelledError:
             shutdown()
