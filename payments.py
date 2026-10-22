@@ -13,10 +13,6 @@ from var import error, suceess_screen_expiry, ws_switch
 
 ####### VARIABLES ########
 
-
-async def listener():
-    logging.info(f"Listening on {ws_switch}")
-
 async def listener():
     while True:
         global error
@@ -42,7 +38,7 @@ async def listener():
                     else:
                         comment = response[2]
                     logging.debug(f"Incoming message: {response}")
-                    amount = await asyncio.to_thread(get_payments())
+                    amount = await asyncio.to_thread(get_payments)
                     make_success_overlay()
                     pulse(pin, duration)
                     logging.debug(f"Waiting {suceess_screen_expiry}s")
