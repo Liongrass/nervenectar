@@ -39,8 +39,8 @@ def create_switch():
 def get_payments():
 	payments_request = requests.get(url_base_payments, headers=get_headers())
 	payments = payments_request.json()
-	for i in range(0, len(payments)):
-		if payments[i]["amount"] > 0:
-			amount = payments[i]["amount"]/1000
-	logging.info(f"Payment received: {amount} satoshi")
-	return amount
+	for payment in payments:
+		if payment["amount"] > 0:
+			amount = payment["amount"]/1000
+			logging.info(f"Payment received: {amount} satoshi")
+			return amount
